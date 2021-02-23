@@ -1,0 +1,15 @@
+C:\Users\supra\Documents\S4\TousUnixPourRaoul\TousUnixPourRaoul\bin\Debug\TousUnixPourRaoul.exe.config
+C:\Users\supra\Documents\S4\TousUnixPourRaoul\TousUnixPourRaoul\bin\Debug\TousUnixPourRaoul.exe
+C:\Users\supra\Documents\S4\TousUnixPourRaoul\TousUnixPourRaoul\bin\Debug\TousUnixPourRaoul.pdb
+C:\Users\supra\Documents\S4\TousUnixPourRaoul\TousUnixPourRaoul\obj\Debug\TousUnixPourRaoul.csprojAssemblyReference.cache
+C:\Users\supra\Documents\S4\TousUnixPourRaoul\TousUnixPourRaoul\obj\Debug\MainWindow.g.cs
+C:\Users\supra\Documents\S4\TousUnixPourRaoul\TousUnixPourRaoul\obj\Debug\App.g.cs
+C:\Users\supra\Documents\S4\TousUnixPourRaoul\TousUnixPourRaoul\obj\Debug\TousUnixPourRaoul_MarkupCompile.cache
+C:\Users\supra\Documents\S4\TousUnixPourRaoul\TousUnixPourRaoul\obj\Debug\TousUnixPourRaoul_MarkupCompile.lref
+C:\Users\supra\Documents\S4\TousUnixPourRaoul\TousUnixPourRaoul\obj\Debug\MainWindow.baml
+C:\Users\supra\Documents\S4\TousUnixPourRaoul\TousUnixPourRaoul\obj\Debug\TousUnixPourRaoul.g.resources
+C:\Users\supra\Documents\S4\TousUnixPourRaoul\TousUnixPourRaoul\obj\Debug\TousUnixPourRaoul.Properties.Resources.resources
+C:\Users\supra\Documents\S4\TousUnixPourRaoul\TousUnixPourRaoul\obj\Debug\TousUnixPourRaoul.csproj.GenerateResource.cache
+C:\Users\supra\Documents\S4\TousUnixPourRaoul\TousUnixPourRaoul\obj\Debug\TousUnixPourRaoul.csproj.CoreCompileInputs.cache
+C:\Users\supra\Documents\S4\TousUnixPourRaoul\TousUnixPourRaoul\obj\Debug\TousUnixPourRaoul.exe
+C:\Users\supra\Documents\S4\TousUnixPourRaoul\TousUnixPourRaoul\obj\Debug\TousUnixPourRaoul.pdb

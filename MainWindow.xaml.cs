@@ -24,5 +24,10 @@ namespace TousUnixPourRaoul
         {
             InitializeComponent();
         }
+
+        public void main()
+        {
+
+        }
     }
 }
