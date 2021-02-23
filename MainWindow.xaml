@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TousUnixPourRaoul"
         mc:Ignorable="d"
         MinHeight="450" MinWidth="800"
-        Background="AntiqueWhite"
+        Background="Lavender"
         Title="Tous unix pour Raoul" Height="450" Width="800" Icon="icon.png" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -22,12 +22,14 @@
         <Border BorderBrush="Black" BorderThickness="0 0 1 0" Grid.Row="1"/>
         <Border Grid.Row="2" BorderBrush="Black" BorderThickness="0 0 1 0"/>
 
-        <Label Name="lb_main_title" Content="Tous unix pour Raoul" Grid.Row="0" Grid.ColumnSpan="2" VerticalContentAlignment="Top" Margin="30" HorizontalContentAlignment="Center" FontSize="24" FontFamily="Yu Gothic UI Light"></Label>
-        <Label Name="lb_input_title" Content="Saisie" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="20" FontFamily="Yu Gothic UI Light"></Label>
-        <Label Name="lb_result_title" Content="Résultat" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="20" FontFamily="Yu Gothic UI Light"/>
+        <Label Name="lb_title" Content="Tous unix pour Raoul" Grid.Row="0" Grid.ColumnSpan="2" VerticalContentAlignment="Top" Margin="30" HorizontalContentAlignment="Center" FontSize="24" FontFamily="Yu Gothic UI Light"></Label>
+        <Label Name="lb_input_t" Content="Saisie" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="20" FontFamily="Yu Gothic UI Light"></Label>
+        <Label Name="lb_result" Content="Résultat" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="20" FontFamily="Yu Gothic UI Light"/>
 
-        <StackPanel Grid.Row="2" Grid.Column="0">
-            
+        <StackPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">
+            <Label Name="lb_input" Content="Veuillez saisir le nombre de piquets" Margin="20 10 0 0"/>
+            <TextBox Name="tbox_input" Margin="50 10 50 0" TextWrapping="Wrap" Padding="5"/>
+            <Button Name="btn_input" Content="OK" VerticalAlignment="Center" Margin="80 50 80 0" Height="40" Click="onClick"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1">
