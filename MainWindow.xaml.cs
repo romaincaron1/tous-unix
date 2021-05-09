@@ -13,11 +13,11 @@ namespace TousUnixPourRaoul
         int count_question = 1;
         int nb_stakes = 0;
         String error;
-        int temp_x;
+        float temp_x;
         public struct Stake
         {
-            public int x;
-            public int y;
+            public float x;
+            public float y;
         }
         public MainWindow()
         {
@@ -26,9 +26,9 @@ namespace TousUnixPourRaoul
 
         private void onClick(object sender, RoutedEventArgs e)
         {
-            int value;
+            float value;
             bool isValid = false;
-            if (int.TryParse(tbox_input.Text, out value))
+            if (float.TryParse(tbox_input.Text, out value))
             {
                 //Veuillez saisir le nombre de piquets 
                 if (count_question == 1 && nb_stakes == 0)
@@ -38,12 +38,15 @@ namespace TousUnixPourRaoul
                     {
                         error = "Veuillez entrer un nombre valide de piquet (1-50)";
                         count_question = 1;
+                    } else if((int)value != value) {
+                        error = "Veuillez saisir une valeur entière";
+                        count_question = 1;
                     } else {
                         //Vérfication OK
                         isValid = true;
                         error = "";
                         lb_input.Content = "Veuillez saisir la coordonnée x du piquet n°" + (stakes.Count + 1);
-                        nb_stakes = value;
+                        nb_stakes = (int)value;
                     }
                 }
 
@@ -100,11 +103,12 @@ namespace TousUnixPourRaoul
                 if(isValid)
                 {
                     tbox_input.Text = "";
+                    error = "";
                     count_question++;
                 }
             } else
             {
-                error = "Veuillez saisir un nombre";
+                error = "Veuillez saisir un nombre valide";
             }
             lb_error.Content = error;
         }
