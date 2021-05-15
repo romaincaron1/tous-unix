@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace TousUnixPourRaoul
 {
@@ -13,22 +16,33 @@ namespace TousUnixPourRaoul
         int count_question = 1;
         int nb_stakes = 0;
         String error;
-        int temp_x;
+        double temp_x;
         public struct Stake
         {
-            public int x;
-            public int y;
+            public double x;
+            public double y;
         }
         public MainWindow()
         {
             InitializeComponent();
+            Line line = new Line();
+            SolidColorBrush test = new SolidColorBrush();
+            test.Color = Color.FromRgb(230, 230, 250);
+            line.Fill = test;
+            line.Width = 2;
+            line.Height = 2;
+            line.X1 = 0;
+            line.Y1 = 90;
+            line.X2 = 180;
+            line.Y2 = 90;
+            cv_draw.Children.Add(line);
         }
 
         private void onClick(object sender, RoutedEventArgs e)
         {
-            int value;
+            double value;
             bool isValid = false;
-            if (int.TryParse(tbox_input.Text, out value))
+            if (double.TryParse(tbox_input.Text, out value))
             {
                 //Veuillez saisir le nombre de piquets 
                 if (count_question == 1 && nb_stakes == 0)
@@ -38,17 +52,24 @@ namespace TousUnixPourRaoul
                     {
                         error = "Veuillez entrer un nombre valide de piquet (1-50)";
                         count_question = 1;
-                    } else {
+                    }
+                    else if ((int)value != value)
+                    {
+                        error = "Veuillez saisir une valeur entière";
+                        count_question = 1;
+                    }
+                    else
+                    {
                         //Vérfication OK
                         isValid = true;
                         error = "";
                         lb_input.Content = "Veuillez saisir la coordonnée x du piquet n°" + (stakes.Count + 1);
-                        nb_stakes = value;
+                        nb_stakes = (int)value;
                     }
                 }
 
                 //Veuillez saisir la coordonnée x du piquet ...
-                if (count_question%2 == 0)
+                if (count_question % 2 == 0)
                 {
                     temp_x = 0;
                     lb_input.Content = "Veuillez saisir la coordonnée y du piquet n°" + (stakes.Count + 1);
@@ -57,8 +78,8 @@ namespace TousUnixPourRaoul
                 }
                 else
                 { //Veuillez saisir la cordonnée y du piquet
-                    if(count_question != 1)
-                    { 
+                    if (count_question != 1)
+                    {
                         Stake temp_stake;
                         temp_stake.x = 0;
                         temp_stake.y = 0;
@@ -68,43 +89,61 @@ namespace TousUnixPourRaoul
                         stakes.Add(temp_stake);
                         lb_input.Content = "Veuillez saisir la coordonnée x du piquet n°" + (stakes.Count + 1);
                         isValid = true;
+
+                        //Canvas
+                        Ellipse point = new Ellipse();
+                        SolidColorBrush mySolidColorBrush = new SolidColorBrush();
+                        mySolidColorBrush.Color = Color.FromRgb(230, 230, 250);
+                        point.Fill = mySolidColorBrush;
+                        point.Width = 2;
+                        point.Height = 2;
+                        Canvas.SetTop(point, 90 - temp_stake.y);
+                        Canvas.SetLeft(point, 90 + temp_stake.x);
+                        cv_draw.Children.Add(point);
                     }
                 }
 
-                if(stakes.Count == nb_stakes - 1 && count_question%2 == 0 && isValid == true)
+                if (stakes.Count == nb_stakes - 1 && count_question % 2 == 0 && isValid == true)
                 {
                     btn_input.Content = "Terminer la saisie";
                 }
 
-                if(stakes.Count == nb_stakes && isValid == true)
+                if (stakes.Count == nb_stakes && isValid == true)
                 {
-                    tbox_input.Text = "";
-                    lb_input.Content = "Saisie terminée";
-                    btn_input.IsEnabled = false;
-                    tbox_input.IsEnabled = false;
-
                     //Résultats à afficher
                     GetResults results = new GetResults();
 
-                    String square = results.getSquare(stakes);
-                    String center_of_gravity = results.getCenterOfGravity(stakes);
-                    String cow_position = results.getCowPosition(stakes);
+                    double square = Math.Abs(results.getSquare(stakes));
+                    double[] center_of_gravity = results.getCenterOfGravity(stakes, square);
+                    bool cow_position = results.getCowPosition(stakes);
 
+                    //Zone de saisie cachée
+                    sp_input.Visibility = Visibility.Hidden;
+                    btn_input.Visibility = Visibility.Hidden;
 
                     //Affichage des résultats
                     gb_results.Visibility = Visibility.Visible;
-                    lb_square.Content = square;
-                    lb_cog.Content = center_of_gravity;
-                    lb_cow_position.Content = cow_position;
+                    lb_square.Content = "Aire : " + square;
+                    lb_cog.Content = "Centre de gravité : (" + Math.Round(center_of_gravity[0],3) + ";" + Math.Round(center_of_gravity[1],3) + ")";
+                    if (cow_position)
+                    {
+                        lb_cow_position.Content = "La vache est à l'intérieur de l'enclos";
+                    }
+                    else
+                    {
+                        lb_cow_position.Content = "La vache est à l'extérieur de l'enclos";
+                    }
                 }
-                if(isValid)
+                if (isValid)
                 {
                     tbox_input.Text = "";
+                    error = "";
                     count_question++;
                 }
-            } else
+            }
+            else
             {
-                error = "Veuillez saisir un nombre";
+                error = "Veuillez saisir un nombre valide";
             }
             lb_error.Content = error;
         }

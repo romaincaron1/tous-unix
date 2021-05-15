@@ -15,26 +15,21 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Border BorderBrush="Black" BorderThickness="0 0 0 1" Grid.Row="0" Grid.ColumnSpan="2"/>
-        <Border BorderBrush="Black" BorderThickness="0 0 1 0" Grid.Row="1"/>
-        <Border Grid.Row="2" BorderBrush="Black" BorderThickness="0 0 1 0"/>
 
-        <Label Name="lb_title" Content="Tous unix pour Raoul" Grid.Row="0" Grid.ColumnSpan="2" VerticalContentAlignment="Top" Margin="30" HorizontalContentAlignment="Center" FontSize="24"></Label>
-        <Label Name="lb_input_t" Content="Saisie" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="20"></Label>
-        <Label Name="lb_result" Content="Résultat" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="20"/>
+        <Image Source="logo.png" Grid.Row="0" Grid.ColumnSpan="2" Width="400" Height="200" Margin="0 0 0 20"></Image>
+        <Label Name="lb_title" Content="Tous Unix pour Raoul" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="20" FontFamily="/TousUnixPourRaoul;component/#Raleway Thin"/>
 
-        <StackPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">
-            <Label Name="lb_input" Content="Veuillez saisir le nombre de piquets" Margin="20 10 0 0" />
-            <TextBox Name="tbox_input" Margin="50 10 50 0" TextWrapping="Wrap" Padding="5"/>
-            <Label Name="lb_error" Content="" Margin="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="Red"/>
-            <Button Name="btn_input" Content="OK" VerticalAlignment="Center" Margin="80 20 80 0" Height="40" Click="onClick"/>
+        <StackPanel Name="sp_input" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Height="100">
+            <Label Name="lb_input" Content="Veuillez saisir le nombre de piquets" HorizontalAlignment="Center" />
+            <TextBox  Name="tbox_input" Margin="50 0 50 0" TextWrapping="Wrap" Padding="5"/>
+            <Label Name="lb_error" Content="" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="Red"/>
         </StackPanel>
+        <Button Name="btn_input" Grid.Row="2" Grid.Column="0" Content="OK" VerticalAlignment="Center" Margin="80 120 80 0" MaxWidth="400"  Height="40" Click="onClick"/>
 
-        <GroupBox Name="gb_results" Grid.Row="2" Grid.Column="1" HeaderStringFormat="" HorizontalAlignment="Center" Height="100" Margin="0" VerticalAlignment="Center" Width="250" Visibility="Hidden">
+        <GroupBox Name="gb_results" Grid.Row="2" Grid.Column="0" HeaderStringFormat="" HorizontalAlignment="Center" Height="100" Margin="0" VerticalAlignment="Center" Width="250" Visibility="Hidden">
             <GroupBox.Header>
                 <TextBlock FontWeight="Bold" FontSize="16" Text="Résultats"></TextBlock>
             </GroupBox.Header>
@@ -44,5 +39,8 @@
                 <Label Name="lb_cow_position"></Label>
             </StackPanel>
         </GroupBox>
+
+        <Canvas Name="cv_draw" Height="180" Width="180" Background="Black" Grid.Column="1" Grid.Row="1"></Canvas>
+
     </Grid>
 </Window>
