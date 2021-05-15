@@ -8,11 +8,26 @@ namespace TousUnixPourRaoul
 {
     public class GetResults
     {
-
         public double getSquare(List<MainWindow.Stake> stakes)
         {
+            int nb_stake = stakes.Count;
             double square = 0;
+            double sum = 0;
+            int next_i = 0;
+            double x0 = 0.0; double y0 = 0.0;
+            double x1 = 0.0; double y1 = 0.0;
+            for (int i = 0; i < nb_stake; i++)
+            {
+                next_i = (i + 1) % (nb_stake);
 
+                x0 = stakes[i].x;
+                y0 = stakes[i].y;
+                x1 = stakes[next_i].x;
+                y1 = stakes[next_i].y;
+
+                sum = sum + x0 * y1 - x1 * y0;
+            }
+            square = sum / 2;
             return square;
         }
 
