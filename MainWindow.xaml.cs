@@ -36,12 +36,20 @@ namespace TousUnixPourRaoul
             line.X2 = 180;
             line.Y2 = 90;
             cv_draw.Children.Add(line);
+
+            //ScaleTransform scale = new ScaleTransform(scaleX, cv_draw.LayoutTransform.Value.M22 * 1.10°);
+            //cv_draw.LayoutTransform = scale;
+            //cv_draw.UpdateLayout();
         }
 
         private void onClick(object sender, RoutedEventArgs e)
         {
             double value;
             bool isValid = false;
+
+            //Focus sur le champs de saisie
+            tbox_input.Focus();
+
             if (double.TryParse(tbox_input.Text, out value))
             {
                 //Veuillez saisir le nombre de piquets 
@@ -75,6 +83,7 @@ namespace TousUnixPourRaoul
                     lb_input.Content = "Veuillez saisir la coordonnée y du piquet n°" + (stakes.Count + 1);
                     temp_x = value;
                     isValid = true;
+                    
                 }
                 else
                 { //Veuillez saisir la cordonnée y du piquet
@@ -146,6 +155,8 @@ namespace TousUnixPourRaoul
                 error = "Veuillez saisir un nombre valide";
             }
             lb_error.Content = error;
+
+
         }
     }
 }

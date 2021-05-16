@@ -63,9 +63,9 @@ namespace TousUnixPourRaoul
             double sum = 0;
             double thetai = 0;
             int nb_stake = stakes.Count;
-            int next_i = 0; int next_i_a = 0; int next_i_b = 0;
+            int next_i = 0; int next_i_a = 0;
 
-            for (int i = 0; i < nb_stake - 1; i++)
+            for (int i = 0; i < nb_stake; i++)
             {
                 double scalar_p = 0;
                 double norm_u = 0;

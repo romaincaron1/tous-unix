@@ -40,7 +40,8 @@
             </StackPanel>
         </GroupBox>
 
-        <Canvas Name="cv_draw" Height="180" Width="180" Background="Black" Grid.Column="1" Grid.Row="1"></Canvas>
+        <Canvas Name="cv_draw" Height="180" Width="180" Background="Black" Grid.Column="1" Grid.Row="1"  >
 
+        </Canvas>
     </Grid>
 </Window>
