@@ -17,6 +17,8 @@ namespace TousUnixPourRaoul
         int nb_stakes = 0;
         String error;
         double temp_x;
+
+        //Piquet
         public struct Stake
         {
             public double x;
@@ -36,10 +38,6 @@ namespace TousUnixPourRaoul
             line.X2 = 180;
             line.Y2 = 90;
             cv_draw.Children.Add(line);
-
-            //ScaleTransform scale = new ScaleTransform(scaleX, cv_draw.LayoutTransform.Value.M22 * 1.10°);
-            //cv_draw.LayoutTransform = scale;
-            //cv_draw.UpdateLayout();
         }
 
         private void onClick(object sender, RoutedEventArgs e)
@@ -56,9 +54,9 @@ namespace TousUnixPourRaoul
                 if (count_question == 1 && nb_stakes == 0)
                 {
                     //Vérification de la valeur saisie (entre 1 et 50)
-                    if (value < 1 || value > 50)
+                    if (value < 3 || value > 50)
                     {
-                        error = "Veuillez entrer un nombre valide de piquet (1-50)";
+                        error = "Veuillez entrer un nombre valide de piquet (3-50)";
                         count_question = 1;
                     }
                     else if ((int)value != value)
@@ -142,6 +140,18 @@ namespace TousUnixPourRaoul
                     {
                         lb_cow_position.Content = "La vache est à l'extérieur de l'enclos";
                     }
+
+                    //Ajout du centre de gravité dans le canvas
+                    Ellipse point = new Ellipse();
+                    SolidColorBrush mySolidColorBrush = new SolidColorBrush();
+                    mySolidColorBrush.Color = Color.FromRgb(255, 0, 0);
+                    point.Fill = mySolidColorBrush;
+                    point.Width = 3;
+                    point.Height = 3;
+                    Canvas.SetTop(point, 90 - Math.Round(center_of_gravity[1], 3));
+                    Canvas.SetLeft(point, 90 + Math.Round(center_of_gravity[0], 3));
+                    cv_draw.Children.Add(point);
+
                 }
                 if (isValid)
                 {
@@ -155,8 +165,6 @@ namespace TousUnixPourRaoul
                 error = "Veuillez saisir un nombre valide";
             }
             lb_error.Content = error;
-
-
         }
     }
 }
